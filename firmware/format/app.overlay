@@ -1,0 +1,27 @@
+/delete-node/ &storage_partition;
+/delete-node/ &scratch_partition;
+
+&flash0 {
+
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		storage_partition: partition@d8000 {
+			label = "storage";
+			reg = <0x000d8000 0x00028000>;
+		};
+	};
+};
+
+/ {
+	msc_disk0 {
+		status="okay";
+		compatible = "zephyr,flash-disk";
+		partition = <&storage_partition>;
+		disk-name = "FLASH";
+		/* cache-size == page erase size */
+		cache-size = <4096>;
+	};
+};
