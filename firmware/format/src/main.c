@@ -25,11 +25,13 @@
 
 #elif defined(CONFIG_FAT_FILESYSTEM_ELM)
 
+#include <zephyr/storage/flash_map.h>
 #include <zephyr/storage/disk_access.h>
 #include <ff.h>
 
 #define MKFS_FS_TYPE FS_FATFS
-#define MKFS_DEV_ID "RAM:"
+//#define MKFS_DEV_ID "RAM:"
+#define MKFS_DEV_ID "NAND:"
 #define MKFS_FLAGS 0
 
 #else
